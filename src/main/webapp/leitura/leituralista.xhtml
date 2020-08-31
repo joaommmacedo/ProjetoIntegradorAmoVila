@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+            <h2>Lista de leitura</h2>
+            <h:form>       
+                <p:dataTable value="#{leituraControle.listaLeituras()}"
+                             var="lei"
+                             emptyMessage="Nenhuma Leitura efetuada"
+                             paginator="true" rows="5">
+                    <p:column headerText="Leitura" sortBy="#{lei.leitura}"
+                              filterBy="#{lei.leitura}" filterMatchMode="contains">
+                        #{lei.leitura}
+                    </p:column>
+                    <p:column headerText="Data Leitura" sortBy="#{lei.leitura}"
+                              filterBy="#{lei.leitura}" filterMatchMode="contains">
+                        <h:outputText value="#{lei.dataLeitura}">
+                                      <f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"/>
+                        </h:outputText>              
+                    </p:column>                   
+                    <p:column headerText="Casa" sortBy="#{lei.associado.casaQuadra}, #{lei.associado.lote}"
+                              filterBy="#{lei.associado.casaQuadra}" filterMatchMode="contains">
+                        #{lei.associado.casaQuadra}, #{lei.associado.lote}
+                    </p:column>                    
+                    
+                    <p:column headerText="Lote" sortBy="#{lei.associado.lote}"
+                              filterBy="#{lei.associado.lote}" filterMatchMode="contains">
+                        #{lei.associado.lote}
+                    </p:column>                    
+                    <p:column headerText="Litros gastos" sortBy=""
+                              filterBy="" filterMatchMode="contains">
+                       
+                    </p:column>                    
+                    
+                    <p:column>
+                        <p:commandButton value="Excluir" 
+                                         actionListener="#{leituraControle.excluir(lei)}"
+                                         ajax="false" immediate="true"/>
+                        <p:commandButton value="Editar" 
+                                         actionListener="#{leituraControle.editar(lei)}"
+                                         action="leituraedita"
+                                         ajax="false" immediate="true"/>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Nova Leitura" action="leituraedita"
+                                 actionListener="#{leituraControle.novo()}" ajax="false"/>                
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+

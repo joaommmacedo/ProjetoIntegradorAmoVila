@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>AmoVILA</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="100">
+                <table>
+                    <tr>
+                        <td><h:graphicImage url="imagensprog/vila.jpeg" width="80"/></td>
+                        <td align="center" width="700"><p:outputLabel value="Sistema Amovila Web" style="font-size: x-large"/></td>
+                    </tr>
+                </table>                
+            </p:layoutUnit>
+            <p:layoutUnit position="south" size="35">
+                <div align="center">Todos os direitos reservados  pelo autor João Marcos MM@2020</div>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="160">
+                <h:form>
+                    <p:menu style="width: 140px">
+                        <p:submenu label="Cadastros" rendered="true" >
+                            <p:menuitem value="Casa  Associado" ajax="false" action="/associado/associadolista"/>
+                            <p:menuitem value="Pessoas" ajax="false" action="/pessoa/pessoalista"/>
+                        </p:submenu>                                                      
+                        <p:submenu label="Leitura do Relogio" rendered="true" >
+                            <p:menuitem value="Leitura" ajax="false" action="/leitura/leituralista"/>
+                        </p:submenu>
+                        <p:submenu label="Relatórios" rendered="true" >
+                            <p:menuitem value="Produtos" ajax="false" action="#"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <ui:insert id="corpo" name="body">
+                    Seja bem vindo!
+                </ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+
