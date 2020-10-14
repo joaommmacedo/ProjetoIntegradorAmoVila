@@ -13,7 +13,7 @@ import javax.faces.convert.Converter;
 
 /**
  *
- * @author jaimedias
+ * @author joaommm
  */
 public class ConverterGenerico implements Converter{
     

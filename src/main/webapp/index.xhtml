@@ -20,9 +20,9 @@
             <p:layoutUnit position="south" size="35">
                 <div align="center">Todos os direitos reservados  pelo autor João Marcos MM@2020</div>
             </p:layoutUnit>
-            <p:layoutUnit position="west" size="160">
+            <p:layoutUnit position="west" size="240">
                 <h:form>
-                    <p:menu style="width: 140px">
+                    <p:menu style="width: 180px">
                         <p:submenu label="Cadastros" rendered="true" >
                             <p:menuitem value="Casa  Associado" ajax="false" action="/associado/associadolista"/>
                             <p:menuitem value="Pessoas" ajax="false" action="/pessoa/pessoalista"/>
@@ -30,15 +30,31 @@
                         <p:submenu label="Leitura do Relogio" rendered="true" >
                             <p:menuitem value="Leitura" ajax="false" action="/leitura/leituralista"/>
                         </p:submenu>
+                        <p:submenu label="Fundo" rendered="true" >
+                            <p:menuitem value="Fundo" ajax="false" action="/fundo/fundolista"/>
+                        </p:submenu>
+                        <p:submenu label="CONTAS A PAGAR" rendered="true" >
+                            <p:menuitem value="PAGAR" ajax="false" action="/contasPagar/contasPagarlista"/>
+                        </p:submenu>
+                        <p:submenu label="Caixa" rendered="true" >
+                            <p:menuitem value="contaCorrente" ajax="false" action="/contaCorrente/contaCorrenteSaldo"/>
+                        </p:submenu>
+                        <p:submenu label="CONTAS A RECEBER" rendered="true" >
+                            <p:menuitem value="Receber" ajax="false" action="/contasReceber/contasReceberlista"/>
+                        </p:submenu>
                         <p:submenu label="Relatórios" rendered="true" >
-                            <p:menuitem value="Produtos" ajax="false" action="#"/>
+                            <p:menuitem value="CONTAS RECEBIDAS" ajax="false" action="#"/>
+                            <p:menuitem value="CONTAS RECEBIDAS" ajax="false" action="#"/>
+                            <p:menuitem value="CONTAS RECEBIDAS" ajax="false" action="#"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
             </p:layoutUnit>
-            <p:layoutUnit position="center">
-                <ui:insert id="corpo" name="body">
-                    Seja bem vindo!
+            <p:layoutUnit position="center" style="background-image: url(imagensprog/vila.jpeg)"      >
+                <ui:insert id="corpo" name="body"  >
+                    
+                    
+                
                 </ui:insert>
             </p:layoutUnit>
         </p:layout>

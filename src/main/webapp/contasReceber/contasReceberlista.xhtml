@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+            <h2>Contas 
+                a Receber</h2>
+            <h:form>       
+                <p:dataTable value="#{contasReceberControle.listaContasReceber()}"
+                             var="crec"
+                             emptyMessage=" Bem vindo ao recebimento de contas !"
+                             paginator="true" rows="5">
+                    
+                    
+                    <p:column headerText="Pagador" sortBy="#{crec.pessoa.nome}"
+                              filterBy="#{crec.pessoa.nome}" filterMatchMode="contains">
+                      #{crec.pessoa.nome}
+                    </p:column>
+        
+                   <p:column headerText="DATA DO RECEBIMENTO" sortBy="#{crec.dataRecebimento}"
+                              filterBy="#{crec.dataRecebimento}" filterMatchMode="contains">
+                        #{crec.dataRecebimento}
+                    </p:column>
+        
+                    <p:column headerText="VALOR Recebido" sortBy="#{crec.valorRecebimento}"
+                              filterBy="#{crec.valorRecebimento}" filterMatchMode="contains">
+                        <h:outputText value=" #{crec.valorRecebimento}">
+                            <f:convertNumber type="currency"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column>
+                        <p:commandButton value="Excluir" 
+                                         actionListener="#{contasReceberControle.excluir(crec)}"
+                                         ajax="false" immediate="true"/>
+                        <p:commandButton value="Editar" 
+                                         actionListener="#{contasReceberControle.editar(crec)}"
+                                         action="contasReceberedita"
+                                         ajax="false" immediate="true"/>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="Novo Recebimento" action="contasReceberedita"
+                                 actionListener="#{contasReceberControle.novo()}" ajax="false"/>                
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

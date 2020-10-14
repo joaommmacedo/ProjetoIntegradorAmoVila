@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+        <h1> Constas Pagar</h1>
+        <br/>
+        <h:form>
+            <p:messages showDetail="true"/>
+            <p:growl />
+            <p:panelGrid columns="2">
+                Descrição: <p:inputText value="#{contasPagarControle.contasPagar.descricaoPagamento}" size="300"
+                               required="true" requiredMessage="Descrição Obrigatória!"/>
+            
+                Data de Pagamento. <p:calendar value="#{contasPagarControle.contasPagar.dataPagamento}"
+                                               pattern="dd/mm/yyyy" locale="pt_BR"
+                                               required="true" requiredMessage= "data obrigatória"/>
+                
+                Valor  <p:inputText value="#{contasPagarControle.contasPagar.valorPagamento}" size="10"
+                                    required="true" requiredMessage= "Valor obrigatório" id="valor" 
+                                    converter="#{contasPagarControle.moneyConverter}">
+                           <f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2"/>
+                           <p:ajax update="valor" process="valor" event="change"/>
+                           
+                       </p:inputText>
+            </p:panelGrid>
+            <p:commandButton value="Salvar" actionListener="#{contasPagarControle.salvar()}"
+                             action="contasPagarlista"
+                             ajax="false"/>
+            
+            <p:commandButton value="Voltar" action="contasPagarlista" immediate="true"/>
+        </h:form>
+        </ui:define>
+    </ui:composition>
+   
+</html>
+
