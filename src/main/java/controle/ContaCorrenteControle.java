@@ -6,6 +6,7 @@
 package controle;
 
 
+import converter.MoneyConverter;
 import entidades.ContaCorrente;
 import facade.ContaCorrenteFacede;
 import java.io.Serializable;
@@ -25,5 +26,32 @@ public class ContaCorrenteControle implements Serializable {
     @EJB
     private ContaCorrenteFacede contaCorrenteFacede;
    
+       private MoneyConverter moneyConverter;
 
+    public MoneyConverter getMoneyConverter() {
+     if(moneyConverter == null){
+        moneyConverter = new MoneyConverter();}
+        return moneyConverter;
+    }
+
+    public void setMoneyConverter(MoneyConverter moneyConverter) {
+        this.moneyConverter = moneyConverter;
+    }
+
+    public ContaCorrente getContaCorrente() {
+        return contaCorrente;
+    }
+
+    public void setContaCorrente(ContaCorrente contaCorrente) {
+        this.contaCorrente = contaCorrente;
+    }
+
+    public ContaCorrenteFacede getContaCorrenteFacede() {
+        return contaCorrenteFacede;
+    }
+
+    public void setContaCorrenteFacede(ContaCorrenteFacede contaCorrenteFacede) {
+        this.contaCorrenteFacede = contaCorrenteFacede;
+    }
+    
 }

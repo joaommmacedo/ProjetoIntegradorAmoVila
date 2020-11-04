@@ -6,11 +6,13 @@
 package entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 
 /**
  *
@@ -19,31 +21,26 @@ import javax.persistence.Id;
 
 @Entity
 public class ContaCorrente implements Serializable, ClassePai{
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
-    private Double saldo ;
-   
+    @Column(nullable = false, precision = 9, scale = 2)
+    private BigDecimal saldo ;
 
-    @Override
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Double getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(Double saldo) {
+    public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
-    
+
+    @Override
+    public Long getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+
  
     
   

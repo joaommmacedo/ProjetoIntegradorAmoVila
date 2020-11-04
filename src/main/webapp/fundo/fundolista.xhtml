@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/index.xhtml">
+        <ui:define name="body">
+            <h2>Fundo (valor adicional)</h2>
+            <h:form>       
+                <p:dataTable value="#{fundoControle.listaFundo()}"
+                             var="fun"
+                             emptyMessage="Digite o primeiro fundo !"
+                             paginator="true" rows="5">
+                 
+                    <p:column headerText="Mês fundo" sortBy="#{fun.mesFundo}"
+                              filterBy="#{fun.mesFundo}" filterMatchMode="contains">
+                        #{fun.mesFundo}
+                    </p:column>
+                    <p:column headerText="Valor de referência" sortBy="#{fun.valorFundo}"
+                              filterBy="#{fun.valorFundo}" filterMatchMode="contains">
+                        <h:outputText value=" #{fun.valorFundo}">
+                            <f:convertNumber type="currency"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column>
+                        <p:commandButton value="Excluir" 
+                                         actionListener="#{fundoControle.excluir(fun)}"
+                                         ajax="false" immediate="true"/>
+                        <p:commandButton value="Editar" 
+                                         actionListener="#{fundoControle.editar(fun)}"
+                                         action="fundoedita"
+                                         ajax="false" immediate="true"/>
+                    </p:column>
+                </p:dataTable>
+                <p:commandButton value="proximo fundo" action="fundoedita"
+                                 actionListener="#{fundoControle.novo()}" ajax="false"/>                
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

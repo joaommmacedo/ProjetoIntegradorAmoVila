@@ -9,37 +9,31 @@
     
     <ui:composition template="/index.xhtml">
         <ui:define name="body">
-        <h1> Constas Receber</h1>
+        <h1> Fundo </h1>
         <br/>
         <h:form>
             <p:messages showDetail="true"/>
             <p:growl />
             <p:panelGrid columns="2">
-                Pagador: <p:selectOneMenu value="#{contasReceberControle.contasReceber.pessoa}"
-                                          converter="#{contasReceberControle.pessoaConverter}">
-                    <f:selectItems value ="#{contasReceberControle.listaPessoa(parte)}"
-                                            var="pes"
-                                            itemLabel="#{pes.nome}"
-                                            itemValue="#{pes}"/>
-                          </p:selectOneMenu>  
+               
             
-                Data de Pagamento. <p:calendar value="#{contasReceberControle.contasReceber.dataRecebimento}"
+                Data de Referência <p:calendar value="#{fundoControle.fundo.mesFundo}"
                                                pattern="dd/mm/yyyy" locale="pt_BR"
                                                required="true" requiredMessage= "data obrigatória"/>
                 
-                Valor  <p:inputText value="#{contasReceberControle.contasReceber.valorRecebimento}" size="10"
+                Valor Adicional <p:inputText value="#{fundoControle.fundo.valorFundo}" size="10"
                                     required="true" requiredMessage= "Valor obrigatório" id="valor" 
-                                    converter="#{contasReceberControle.moneyConverter}">
+                                    converter="#{fundoControle.moneyConverter}">
                            <f:convertNumber pattern="##,###,###,###.##" minFractionDigits="2"/>
                            <p:ajax update="valor" process="valor" event="change"/>
                            
                        </p:inputText>
             </p:panelGrid>
-            <p:commandButton value="Salvar" actionListener="#{contasReceberControle.salvar()}"
-                             action="contasReceberlista"
+            <p:commandButton value="Salvar" actionListener="#{fundoControle.salvar()}"
+                             action="fundolista"
                              ajax="false"/>
             
-            <p:commandButton value="Voltar" action="contasReceberlista" immediate="true"/>
+            <p:commandButton value="Voltar" action="fundolista" immediate="true"/>
         </h:form>
         </ui:define>
     </ui:composition>
